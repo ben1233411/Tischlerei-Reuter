@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holz & Tischplatten Manufaktur</title>
+<title>Tischlerei-Reuter</title>
 
 <style>
 *{
@@ -13,41 +13,37 @@
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#f5f1e8;
-    color:#3f3426;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(180deg, #f3efe6, #e7ddcc);
+    color:#3b2f24;
 }
 
+/* HEADER */
 header{
-    background:#6b8e23;
-    color:white;
+    background: linear-gradient(135deg, #5a3e2b, #7a5a3a);
+    color:#fff;
     text-align:center;
-    padding:30px;
+    padding:35px;
+    letter-spacing:1px;
 }
 
 header h1{
-    margin-bottom:10px;
+    font-size:34px;
+    margin-bottom:8px;
 }
 
-.info-box{
+/* BOXEN */
+.info-box, .cart{
     max-width:1000px;
     margin:25px auto;
-    background:#fffaf0;
+    background:#fffaf3;
     padding:25px;
-    border-radius:12px;
-    border-left:6px solid #6b8e23;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    border:1px solid #e2d6c6;
 }
 
-.cart{
-    background:#fffaf0;
-    max-width:1000px;
-    margin:25px auto;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-
+/* PRODUKTE */
 .products{
     max-width:1200px;
     margin:auto;
@@ -58,11 +54,17 @@ header h1{
 }
 
 .product{
-    background:#fffaf0;
-    border-radius:15px;
+    background:#fffaf3;
+    border-radius:16px;
     overflow:hidden;
-    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    box-shadow:0 6px 18px rgba(0,0,0,0.10);
     text-align:center;
+    border:1px solid #e6dccd;
+    transition:transform 0.2s ease;
+}
+
+.product:hover{
+    transform:translateY(-4px);
 }
 
 .product img{
@@ -76,40 +78,41 @@ header h1{
 }
 
 .price{
-    color:#556b2f;
-    font-size:24px;
+    color:#6b4a2f;
+    font-size:22px;
     font-weight:bold;
     margin:10px 0;
 }
 
+/* BUTTONS */
 .cart-btn{
     padding:10px 18px;
     border:none;
-    background:#6b8e23;
+    background: linear-gradient(135deg, #7a5a3a, #5a3e2b);
     color:white;
-    border-radius:6px;
+    border-radius:8px;
     cursor:pointer;
     font-size:14px;
 }
 
 .cart-btn:hover{
-    background:#556b2f;
+    opacity:0.9;
 }
 
 .remove-btn{
-    background:#a52a2a;
+    background:#8b3a3a;
 }
 
 .remove-btn:hover{
-    background:#7a1f1f;
+    background:#6e2c2c;
 }
 
+/* CART */
 .cart-item{
     display:flex;
     justify-content:space-between;
-    align-items:center;
     padding:10px 0;
-    border-bottom:1px solid #ddd;
+    border-bottom:1px solid #e6dccd;
 }
 
 .total{
@@ -118,18 +121,21 @@ header h1{
     margin-top:20px;
 }
 
+/* TEXTAREA */
 textarea{
     width:100%;
     height:120px;
     padding:12px;
-    border-radius:8px;
-    border:1px solid #ccc;
+    border-radius:10px;
+    border:1px solid #d6c7b3;
     margin-top:10px;
+    background:#fffdf9;
 }
 
+/* FOOTER */
 footer{
     text-align:center;
-    background:#6b8e23;
+    background:#5a3e2b;
     color:white;
     padding:25px;
     margin-top:30px;
@@ -140,37 +146,30 @@ footer{
 <body>
 
 <header>
-    <h1>🌳 Holz & Tischplatten Manufaktur</h1>
-    <p>Handgefertigte Holzprodukte</p>
+    <h1>🌳 Tischlerei-Reuter</h1>
+    <p>Handgefertigte Möbel & Holzarbeiten aus Meisterhand</p>
 </header>
 
 <div class="info-box">
-    <h2>Willkommen in unserem Shop</h2>
+    <h2>Willkommen</h2>
     <br>
-    <p>Wir fertigen hochwertige Holzprodukte mit viel Liebe zum Detail.</p>
+    <p>Hochwertige, handgefertigte Holzprodukte direkt aus unserer Tischlerei.</p>
     <br>
-    <p><strong>Wichtiger Hinweis:</strong><br>
-    Große Tischplatten müssen persönlich abgeholt werden.</p>
-    <br>
-    <p><strong>Zahlung:</strong><br>
-    Nur Barzahlung bei Abholung.</p>
+    <p><strong>Hinweis:</strong> Große Tischplatten nur Abholung vor Ort.</p>
+    <p><strong>Zahlung:</strong> Barzahlung bei Abholung.</p>
 </div>
 
 <div class="cart">
     <h2>🛒 Warenkorb (<span id="cartCount">0</span>)</h2>
 
-    <br>
     <div id="cartItems"></div>
 
     <div class="total">
         Gesamt: <span id="total">0.00</span> €
     </div>
 
-    <br>
-
     <h3>Extra Wünsche</h3>
-    <textarea id="specialRequests"
-        placeholder="Hier können besondere Wünsche eingetragen werden..."></textarea>
+    <textarea id="specialRequests"></textarea>
 
     <br><br>
 
@@ -183,13 +182,10 @@ footer{
 
     <!-- Tischplatte -->
     <div class="product">
-        <img src="https://source.unsplash.com/600x400/?wood,table,oak" alt="Tischplatte">
+        <img src="images/tischplatte.jpg" alt="Tischplatte">
 
         <div class="product-info">
             <h3>Tischplatte</h3>
-
-            <label for="tableSize">Größe wählen:</label>
-            <br><br>
 
             <select id="tableSize">
                 <option value="50">1m x 1,5m - 50 €</option>
@@ -206,14 +202,14 @@ footer{
 
     <!-- Holzfigur -->
     <div class="product">
-        <img src="https://source.unsplash.com/600x400/?wood,carving,figurine" alt="Holzfigur">
+        <img src="images/holzfigur.jpg" alt="Holzfigur">
 
         <div class="product-info">
             <h3>Kleine geschnitzte Holzfigur</h3>
             <div class="price">25.00 €</div>
 
             <button class="cart-btn"
-                onclick="addToCart('Kleine geschnitzte Holzfigur',25)">
+                onclick="addToCart('Kleine Holzfigur',25)">
                 In den Warenkorb
             </button>
         </div>
@@ -222,10 +218,11 @@ footer{
 </section>
 
 <footer>
-    © 2026 Holz & Tischplatten Manufaktur
+    © 2026 Tischlerei-Reuter
 </footer>
 
 <script>
+
 let cart = [];
 let total = 0;
 
@@ -250,12 +247,6 @@ function addTableTop(){
     updateCart();
 }
 
-function removeItem(index){
-    total -= cart[index].price;
-    cart.splice(index,1);
-    updateCart();
-}
-
 function updateCart(){
 
     const cartItems = document.getElementById("cartItems");
@@ -264,9 +255,7 @@ function updateCart(){
     cart.forEach((item,index)=>{
         cartItems.innerHTML += `
         <div class="cart-item">
-            <div>
-                ${item.name} - ${item.price.toFixed(2)} €
-            </div>
+            <div>${item.name} - ${item.price.toFixed(2)} €</div>
             <button class="cart-btn remove-btn"
                 onclick="removeItem(${index})">
                 Entfernen
@@ -277,6 +266,12 @@ function updateCart(){
 
     document.getElementById("cartCount").innerText = cart.length;
     document.getElementById("total").innerText = total.toFixed(2);
+}
+
+function removeItem(index){
+    total -= cart[index].price;
+    cart.splice(index,1);
+    updateCart();
 }
 
 function checkout(){
@@ -294,9 +289,8 @@ function checkout(){
         orderText += item.name + " - " + item.price.toFixed(2) + " €%0D%0A";
     });
 
-    orderText += "%0D%0A--------------------%0D%0A";
-    orderText += "Gesamt: " + total.toFixed(2) + " €%0D%0A%0D%0A";
-    orderText += "Extra Wünsche:%0D%0A" + encodeURIComponent(wishes);
+    orderText += "%0D%0AGesamt: " + total.toFixed(2) + " €%0D%0A";
+    orderText += "%0D%0AWünsche:%0D%0A" + encodeURIComponent(wishes);
 
     window.location.href =
         "mailto:ben.klosterfelde@hotmail.com" +
